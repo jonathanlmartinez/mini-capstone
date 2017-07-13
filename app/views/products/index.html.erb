@@ -14,11 +14,11 @@
     </a>
   </div>
   <div class="media-body">
-    <h4 class="media-heading"> <%= product.name %> </h4>
+    <h2 class="media-heading"> <%= product.name %> </h2>
     <h3> <%= product.description %> </h3>
-    <h2> PRICE: $<%= product.price %></h2>
-    <button type="button" class="btn btn-default" href="/products/<%= product.id %>" aria-label="Left Align">
-       <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+    <h4> PRICE: $<%= product.price %></h4>
+    <a type="button" class="btn btn-default" href="/products/<%= product.id %>" aria-label="Left Align">
+       <span class="glyphicon glyphicon-plus" aria-hidden="true"></a>
     </button>
   </div>
 </div>
