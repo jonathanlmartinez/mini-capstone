@@ -1,6 +1,10 @@
 <div class="container">
   <div class="jumbotron">
-  <div class="alert alert-info" role="alert"> <%= @product.sale_message %> </div>
+  <% if @product.discounted? %>
+      <div class="alert alert-info" role="alert"> Discounted Item </div>
+  <% else %>
+      <div class="alert alert-info" role="alert"> Regular Price </div>
+  <% end %>
     <h1> <%= @product.name  %> </h1>
     <h2> <%= @product.description  %> </h2>
     <h4> Price: <%= number_to_currency(@product.price) %> </h4>
