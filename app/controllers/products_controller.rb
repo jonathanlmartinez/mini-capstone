@@ -3,14 +3,22 @@ class ProductsController < ApplicationController
   def index
     sort_attribute = params[:sort_by]
     sort_order = params[:sort_order]
+    search = params[:form_search_input]
 
-    if sort_attribute && sort_order
-      @products = Product.all.order(sort_attribute => sort_order)
-    
-    else
+    search = params[:search_input]
+
+    if search 
+      @products = Product.where("first_name LIKE ?", "%" + search + "%")
+    else 
       @products = Product.all
-
     end
+      
+
+    # if sort_attribute && sort_order
+    #   @products = Product.all.order(sort_attribute => sort_order) 
+    # else
+    #   @products = Product.all
+    # end
 
     render "index.html.erb"
 
@@ -28,6 +36,7 @@ class ProductsController < ApplicationController
 
   def create
     product = Product.new(
+      abreviation: params[:form_abreviation],
       name: params[:form_name],
       description: params[:form_description],
       price: params[:form_price],
@@ -65,4 +74,5 @@ class ProductsController < ApplicationController
     redirect_to "/products"
   end 
 
+  
 end

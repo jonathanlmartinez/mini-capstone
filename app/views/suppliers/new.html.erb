@@ -1,0 +1,28 @@
+<%= form_tag "/supplier", method: "post" do %>
+<!-- jumbotron --> 
+ <div class="jumbotron">
+     <h1>Add a Supplier</h1>
+  </div>
+<!--   jumbotron ends -->
+
+<!-- Form -->
+  <div class="form-group">
+    <label for="form_name">Name</label>
+    <input name="form_name" type="text" class="form-control" id="form_name" placeholder="Name">
+  </div>
+  n
+  <div class="form-group">
+
+    <label for="form_name">Email</label>
+    <input name="form_email" type="text" class="form-control" id="form_name" placeholder="Email">
+    
+  </div>
+  <div class="form-group">
+    <label for="form_phone_number">Phone Number</label>
+    <input name="form_phone_number" type="text" class="form-control" id="form_name" placeholder="Phone Number">
+  </div>
+  
+  <button type="submit" class="btn btn-default">Submit</button>
+</div>
+<% end %>
+<!-- form ends -->

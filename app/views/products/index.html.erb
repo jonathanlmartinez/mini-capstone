@@ -10,7 +10,11 @@
  <div class="media">
   <div class="media-left media-middle">
     <a href="/products/<%= product.id %>">
-      <img class="media-object" src="<%= product.image %>" alt="Product Image" width="100" height="100">
+      <% if product.images.first %>
+        <img class="media-object" src="<%= product.images.first.image_url %>" alt="Product Image" width="100" height="100">
+      <% else %>
+        <img class="media-object" src="http://www.epurvanchal.com/media/k2/items/cache/d3b3799d6611d677944f5f86a500beb3_XL.jpg" alt="Product Image" width="100" height="100">
+      <% end %>
     </a>
   </div>
   <div class="media-body">
@@ -20,8 +24,8 @@
     <div>
        <a type="button" class="btn btn-default" href="/products/<%= product.id %>" aria-label="Right Align">
        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+      </a>
     </div>
-   </a>
 </div>
 </div>
 

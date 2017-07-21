@@ -9,6 +9,19 @@ Rails.application.routes.draw do
 
   get "/products/:id/edit" => "products#edit"
   patch "/products/:id" => "products#update"
-  delete "/products/:id" => "pages#destroy"
+  delete "/products/:id" => "products#destroy"
 
+ # get "/" => "products#index"
+  # get "/home" => "products#index"
+  get "/supplier/new" => "suppliers#new"
+  post "/supplier" => "suppliers#create"
+  # get "/suppliers" => "products#index"
+  # get "/products/:id" => "products#show"
+
+  get "/supplier/:id/edit" => "supplier#edit"
+  patch "/supplier/:id" => "supplier#update"
+  delete "/supplier/:id" => "supplier#destroy"
+
+  get "/signup" => "users#new"
+  post "/users" => "users#create"
 end
