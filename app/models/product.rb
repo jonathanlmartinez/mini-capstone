@@ -1,6 +1,7 @@
 class Product < ApplicationRecord
   belongs_to :suplier
   has_many :images
+  has_many :orders
 
 
   def discounted?

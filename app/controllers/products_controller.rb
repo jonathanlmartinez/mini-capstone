@@ -40,9 +40,10 @@ class ProductsController < ApplicationController
       name: params[:form_name],
       description: params[:form_description],
       price: params[:form_price],
-      image: params[:form_image]
       )
     product.save
+    
+    # image: params[:form_image]
     flash[:success] = "Product succesfully created"
     redirect_to "products#index"
 

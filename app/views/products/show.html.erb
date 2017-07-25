@@ -23,7 +23,25 @@
         <a class="btn glyphicon glyphicon-pencil" href="/products/<%= @product.id%>/edit" role="button">Edit</a>
       </div>
     </div>
+
+      <h3>Cart</h3>
+  <%= form_tag "/orders", method: :post do %>
+    <div>
+    
+      <label for="form_abreviation">Quantity </label>
+      <input name="quantity" type="" class="" id="form_name" placeholder="Enter Quantity">
+    
+    <input type="hidden" name="id" value="<%= @product_id %>">
+    
+    <input type="submit" class="btn" value="Buy Now">
+    </div>
+  <% end %>
+
   </div>
+
+    
+
+
 </div>
 
 

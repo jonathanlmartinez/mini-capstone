@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="jumbotron">
+    <h1> Thank you <%= @user.name %>! </h1>
+    <h2> Order Summary </h2>
+    <h3> Items: $<%= @cal_subtotal %> </h3>
+    <h3> Estimated tax to be collected: $<%= @cal_tax  %> </h3>
+    <h2> Order total: $<%= @cal_total  %> </h2> 
+    <h3> A confirmation email has been sent to: <%= @user.email  %> </h3>
+    
+    <div class="row">
+      <div class="col-xs-6 col-md-3">
+        <a href="" class="thumbnail">
+          <img src="<%= @product.images.first.image_url %>" alt="...">
+        </a>
+      </div>
+    </div>
+
+  </div>
+</div>
