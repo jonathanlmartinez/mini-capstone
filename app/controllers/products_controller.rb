@@ -1,6 +1,8 @@
 class ProductsController < ApplicationController
 
   def index
+    
+
     sort_attribute = params[:sort_by]
     sort_order = params[:sort_order]
     search = params[:form_search_input]
@@ -12,7 +14,12 @@ class ProductsController < ApplicationController
     else 
       @products = Product.all
     end
-      
+     
+    category_name = params[:category]
+    if category_name
+      category = Category.find_by(name: category_name)
+      @products = category.products
+    end  
 
     # if sort_attribute && sort_order
     #   @products = Product.all.order(sort_attribute => sort_order) 
@@ -27,6 +34,9 @@ class ProductsController < ApplicationController
   def show 
     @product_id = params[:id]
     @product = Product.find_by(id: @product_id)
+
+    category = Category.find_by(product_id: id)
+    @categories = category.products
     render "show.html.erb"
   end 
 
@@ -43,8 +53,13 @@ class ProductsController < ApplicationController
       )
     product.save
 
-    # image: params[:form_image]
-    flash[:success] = "Product succesfully created"
+    image = Image.new(
+    image_url: params[:form_image],
+    product_id: @product_id
+    )
+    image.save
+
+    flash[:success] = "Your Product was succesfully created"
     redirect_to "products#index"
 
   end
