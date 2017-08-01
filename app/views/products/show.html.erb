@@ -11,7 +11,7 @@
     <h4> Total: <%= number_to_currency(@product.total) %> </h4>
 
     
-    <% Category.all.each do |category| %>
+    <% @categories.each do |category| %>
         <h4> <%= category.name %> </h4>      
     <% end %>
 
@@ -20,7 +20,7 @@
         <div class="span4"><img src="<%= @product.images.first.image_url %>" width="100" height="100"/></div>
         <div class="span4"></div>
     </div>
-
+<% if current_user && current_user.admin %>
     <div> <%= form_tag "/products/#{@product_id}", method: "delete" do %>
       <input type="submit" class="btn pull-right" value="Delete" >
       <% end %>
@@ -28,9 +28,10 @@
         <a class="btn glyphicon glyphicon-pencil" href="/products/<%= @product.id%>/edit" role="button">Edit</a>
       </div>
     </div>
-
+<% end %>
+<% if current_user %>
       <h3>Cart</h3>
-  <%= form_tag "/orders", method: :post do %>
+  <%= form_tag "/carted_products", method: :post do %>
     <div>
     
       <label for="form_abreviation">Quantity </label>
@@ -38,7 +39,11 @@
     
     <input type="hidden" name="id" value="<%= @product_id %>">
     
-    <input type="submit" class="btn" value="Buy Now">
+
+    <button type="submit" class="btn btn-default btn-lg">
+      <span class="glyphicon glyphicon-shopping-cart align-left" aria-hidden="true"></span> Add to Cart
+    </button>
+<% end %>
     </div>
   <% end %>
 

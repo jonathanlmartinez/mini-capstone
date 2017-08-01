@@ -1,4 +1,6 @@
 class ProductsController < ApplicationController
+  before_action :authenticate_admin!, except: [:index, :show]
+
 
   def index
     
@@ -35,8 +37,8 @@ class ProductsController < ApplicationController
     @product_id = params[:id]
     @product = Product.find_by(id: @product_id)
 
-    category = Category.find_by(product_id: id)
-    @categories = category.products
+    
+    @categories = @product.categories.all
     render "show.html.erb"
   end 
 

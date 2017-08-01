@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="jumbotron">
+  <h1> Your Cart </h1>
+    <% @carted_products.each do |carted| %>
+    <ul class="list-group">
+      <li class="list-group-item">
+        <span class="badge"><%= carted.quantity %></span>
+          <%= carted.product.name %>
+      </li>
+    </ul>
+    
+    
+    <% end %>
+
+    <%= form_tag "/orders", method: :post do %>
+    <div>
+    <button type="submit" class="btn btn-default btn-lg">
+      <span class="glyphicon glyphicon-piggy-bank align-left" aria-hidden="true"></span> Buy Now
+    </button>
+
+    </div>
+    <% end %>
+
+  </div>
+</div>
