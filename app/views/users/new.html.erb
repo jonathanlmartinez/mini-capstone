@@ -2,19 +2,30 @@
   <%= form_tag "/users", method: "post" do %>
     <div class= "jumbotron">
          <h1>Sign Up</h1>
+            <% if @user.errors.any? %>
+              <div id="error_explanation">
+                <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+             
+                <ul>
+                <% @user.errors.full_messages.each do |msg| %>
+                  <li><%= msg %></li>
+                <% end %>
+                </ul>
+              </div>
+            <% end %>
     </div>
     <div class="form-group">
-        <label for="form_abreviation">Text</label>
-        <input name="name" type="text" class="form-control" id="form_name" placeholder="User">
+        <label for="form_abreviation">Name</label>
+        <input name="name" type="text" class="form-control" id="form_name" placeholder="User" value="<%=@user.name%>">
       
         <label for="form_name"> Email </label>
-        <input name="email" type="email" class="form-control" id="form_name" placeholder="Email">
+        <input name="email" type="email" class="form-control" id="form_name" placeholder="Email" value="<%=@user.email%>">
         
         <label for="form_description">Password</label>
         <input name="password" type="text" class="form-control" id="form_description" placeholder="Password">
 
         <label for="form_description">Confirm Password</label>
-        <input name="password_comfirm" type="text" class="form-control" id="form_description" placeholder="Description">
+        <input name="password_comfirm" type="text" class="form-control" id="form_description" placeholder="Confirm Password">
 
         <button type="submit" class="btn btn-default">Submit</button>
     </div>
